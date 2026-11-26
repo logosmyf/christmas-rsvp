@@ -116,12 +116,12 @@ function parseRsvp(values = {}) {
   }
 
   const category = String(values.foodCategory ?? '').trim();
-  if (category && !Object.prototype.hasOwnProperty.call(FOOD_CATEGORIES, category)) return null;
-  registration.foodCategory = category ? FOOD_CATEGORIES[category] : '';
+  if (!Object.prototype.hasOwnProperty.call(FOOD_CATEGORIES, category)) return null;
+  registration.foodCategory = FOOD_CATEGORIES[category];
 
   const phone = registration.contactNumber;
-  if (!registration.fullName || !registration.wish1 ||
-      (phone && (!/^\+?[\d(). -]+$/.test(phone) || !/\d/.test(phone)))) return null;
+  if (!registration.fullName || !registration.foodName || !registration.wish1 ||
+      !/^\+?[\d(). -]+$/.test(phone) || !/\d/.test(phone)) return null;
 
   return registration;
 }

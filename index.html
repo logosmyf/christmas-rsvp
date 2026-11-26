@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/styles.css?v=fraunces-1">
   <script defer src="js/envelope.js?v=handwritten-1"></script>
   <script defer src="js/music.js?v=stationery-2"></script>
-  <script defer src="js/registration.js"></script>
+  <script defer src="js/registration.js?v=required-2"></script>
 </head>
 <body>
   <button class="music-disc" type="button" aria-label="播放背景音乐" aria-controls="music-player" title="播放背景音乐" hidden>
@@ -145,16 +145,16 @@
           <fieldset>
             <legend>个人资料 <small>Personal Information</small></legend>
             <label>中文全名 Full Name *<input name="fullName" required maxlength="100" autocomplete="name" placeholder="请输入你的中文全名" aria-describedby="registration-status"></label>
-            <label>联系号码 Contact Number<input name="contactNumber" type="tel" inputmode="tel" maxlength="30" autocomplete="tel" placeholder="012-3456789" aria-describedby="registration-status"></label>
+            <label>联系号码 Contact Number *<input name="contactNumber" required type="tel" inputmode="tel" maxlength="30" autocomplete="tel" placeholder="012-3456789" aria-describedby="registration-status"></label>
           </fieldset>
           <fieldset>
             <legend>食物分享 <small>Potluck</small></legend>
             <p>请填写你当天准备带来的食物。</p>
-            <label>食物名称<input name="foodName" maxlength="200" placeholder="例如：意大利面、蛋糕、饮料"></label>
+            <label>食物名称 *<input name="foodName" required aria-describedby="registration-status" maxlength="200" placeholder="例如：意大利面、蛋糕、饮料"></label>
             <fieldset class="category">
-              <legend>食物类别</legend>
+              <legend>食物类别 *</legend>
               <div class="options">
-                <label><input type="radio" name="foodCategory" value="main">🍝 主食</label>
+                <label><input type="radio" name="foodCategory" value="main" required aria-describedby="registration-status">🍝 主食</label>
                 <label><input type="radio" name="foodCategory" value="snack">🍟 小吃</label>
                 <label><input type="radio" name="foodCategory" value="dessert">🍰 甜点</label>
                 <label><input type="radio" name="foodCategory" value="drink">🥤 饮料</label>
