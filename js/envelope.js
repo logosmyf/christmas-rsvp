@@ -32,9 +32,22 @@ addEventListener('resize', queueEnvelopeFrame);
 reducedMotion.addEventListener?.('change', updateMotionPreference);
 updateMotionPreference();
 
+const snow = document.querySelector('.snow');
+
+for (let index = 0; index < 36; index++) {
+  const flake = document.createElement('span');
+  const large = index % 3 === 0;
+  flake.textContent = large ? '❄' : '•';
+  flake.style.setProperty('--left', `${(3 + index * 37) % 98}%`);
+  flake.style.setProperty('--size', `${large ? 19 + index % 16 : 9 + index % 9}px`);
+  flake.style.setProperty('--duration', `${5 + index % 7}s`);
+  flake.style.setProperty('--delay', `-${(index * 17 % 87) / 10}s`);
+  flake.style.setProperty('--opacity', large ? '.92' : '.68');
+  snow.append(flake);
+}
+
 if ('IntersectionObserver' in window) {
-  const snow = document.querySelector('.snow');
   new IntersectionObserver(([entry]) => {
     snow.classList.toggle('paused', !entry.isIntersecting);
-  }).observe(document.querySelector('.hero'));
+  }).observe(snow);
 }
