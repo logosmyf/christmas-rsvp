@@ -183,6 +183,18 @@
     input:disabled { opacity: .68; }
     .rsvp { font-family: inherit; font-size: 1rem; }
 
+    .background-music {
+      display: grid;
+      gap: .35rem;
+      margin-top: 1.25rem;
+      font-size: .875rem;
+    }
+
+    .background-music audio {
+      width: 100%;
+      max-width: 20rem;
+    }
+
     @media (max-width: 730px) {
       main {
         align-items: start;
@@ -250,6 +262,10 @@
           <button class="rsvp" type="submit">Send RSVP</button>
         </fieldset>
       </form>
+      <div class="background-music">
+        <span id="background-music-label">Background music · Jingle Bells</span>
+        <audio src="assets/jingle-bells.mp3" controls loop preload="none" aria-labelledby="background-music-label"></audio>
+      </div>
     </section>
   </main>
   <script>
