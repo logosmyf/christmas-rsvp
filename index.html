@@ -5,9 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LOGOSMYF 圣诞派对邀请函 · 2026年12月20日">
   <title>LOGOSMYF Christmas Party 2026</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script defer src="js/envelope.js"></script>
-  <script defer src="js/music.js"></script>
+  <script>
+    // Refresh starts at the welcome. Follow shared anchors and keep Back restoration.
+    const navigation = performance.getEntriesByType('navigation')[0];
+    if (navigation ? navigation.type === 'reload' : performance.navigation?.type === 1) {
+      const restoration = history.scrollRestoration;
+      history.scrollRestoration = 'manual';
+      if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+      window.addEventListener('pageshow', () => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+          history.scrollRestoration = restoration;
+        });
+      }, { once: true });
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=stationery-2">
+  <script defer src="js/envelope.js?v=stationery-2"></script>
+  <script defer src="js/music.js?v=stationery-2"></script>
   <script defer src="js/registration.js"></script>
 </head>
 <body>
@@ -42,7 +58,10 @@
         <p class="notice">注意⚠️这次圣诞派对只开放给圣青家人们参与💒</p>
         <div class="music">
           <span id="music-label">背景音乐 · Jingle Bells</span>
-          <audio id="music-player" src="assets/jingle-bells.mp3" controls loop preload="none" aria-labelledby="music-label"></audio>
+          <audio id="music-player" controls loop preload="metadata" aria-labelledby="music-label">
+            <source src="assets/jingle-bells.m4a" type="audio/mp4">
+            <source src="assets/jingle-bells.mp3" type="audio/mpeg">
+          </audio>
         </div>
           <a class="button gold" href="#details">向下滑动，打开你的圣诞邀请函 <span aria-hidden="true">⌄</span></a>
       </div>
@@ -54,10 +73,10 @@
           <div class="envelope">
             <div class="envelope-back"></div>
             <div class="envelope-letter">
-              <small>YOU’RE INVITED TO</small>
+              <small class="letter-host">✦ &nbsp; LOGOSMYF &nbsp; ✦</small>
               <strong>Christmas Party</strong>
               <time datetime="2026-12-20T18:00:00+08:00">20 DECEMBER 2026 · 6:00 PM</time>
-              <small>Alvin &amp; Irene’s Home<br>40, Jalan Pulau Li Hua 1</small>
+              <p>Alvin &amp; Irene’s Home<br><span>40, Jalan Pulau Li Hua 1</span></p>
             </div>
             <div class="envelope-front"></div>
             <div class="envelope-flap"></div>

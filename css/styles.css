@@ -124,6 +124,7 @@ section { scroll-margin-top: 1rem; }
   background: var(--burgundy);
   font: 700 .72rem/1 system-ui, sans-serif;
 }
+.music-disc.is-loading span { font-size: .62rem; }
 .music-disc.is-playing {
   background: repeating-radial-gradient(circle, #211619 0 3px, #604047 4px 5px);
 }
@@ -173,21 +174,41 @@ section { scroll-margin-top: 1rem; }
 .envelope-letter {
   position: absolute;
   z-index: 2;
-  inset: 6% 6% 3%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3% 2%;
-  border: 4px double #b88d4e;
-  background: var(--ivory);
-  transform: translateY(var(--letter, -64%));
-  color: var(--burgundy);
+  inset: 4% 5% 1%;
+  padding: 5% 4% 0;
+  border: 1px solid #b28a4f;
+  background: radial-gradient(ellipse at 50% 0, #fffdf5, #f4e6ce);
+  box-shadow: inset 0 0 0 4px #fff8ed, inset 0 0 0 5px #b28a4fa8, 0 4px 15px #41071050;
+  transform: translateY(var(--letter, -72%));
+  color: #254836;
   text-align: center;
   line-height: 1.2;
 }
-.envelope-letter small, .envelope-letter time { font-size: clamp(.63rem, 1.65vw, .87rem); }
-.envelope-letter time { margin-block: .2em; font-weight: 700; }
-.envelope-letter strong { font: 400 clamp(1rem, 4vw, 2.1rem)/1.2 var(--display); }
+.letter-host {
+  display: block;
+  color: #735624;
+  font-size: clamp(.54rem, 1.6vw, .73rem);
+  font-weight: 750;
+  letter-spacing: .19em;
+}
+.envelope-letter strong {
+  display: block;
+  margin-block: .1em .18em;
+  color: var(--burgundy);
+  font: italic 400 clamp(1.26rem, 5.4vw, 2.8rem)/1.05 var(--display);
+  letter-spacing: -.05em;
+}
+.envelope-letter time {
+  display: inline-block;
+  padding: .28em .5em;
+  border-block: 1px solid #b28a4fa8;
+  font-size: clamp(.56rem, 1.65vw, .8rem);
+  font-weight: 750;
+  letter-spacing: .06em;
+}
+.envelope-letter p { margin: .4em 0 0; font-size: clamp(.64rem, 1.8vw, .95rem); font-weight: 650; }
+.envelope-letter p span { font-size: .9em; font-weight: 400; }
+
 .envelope-seal {
   position: absolute;
   z-index: 5;
@@ -293,7 +314,7 @@ form button + p { margin-top: .75rem; }
   .snow { display: none; }
   .envelope-scroll.is-animated { min-height: 0; }
   .is-animated .envelope-stage { position: static; height: clamp(18rem, 58svh, 42rem); align-items: end; padding-top: 0; }
-  .envelope { --flap-layer: 1 !important; --flap: 175deg !important; --letter: -64% !important; --seal: 0 !important; }
+  .envelope { --flap-layer: 1 !important; --flap: 175deg !important; --letter: -72% !important; --seal: 0 !important; }
 }
 
 .welcome-letter .gold { margin-top: 1.4rem; }
