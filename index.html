@@ -7,9 +7,13 @@
   <title>LOGOSMYF Christmas Party 2026</title>
   <link rel="stylesheet" href="css/styles.css">
   <script defer src="js/envelope.js"></script>
+  <script defer src="js/music.js"></script>
   <script defer src="js/registration.js"></script>
 </head>
 <body>
+  <button class="music-disc" type="button" aria-label="播放背景音乐" aria-controls="music-player" title="播放背景音乐" hidden>
+    <span aria-hidden="true">▶</span>
+  </button>
   <main id="top">
     <section class="welcome" aria-labelledby="welcome-title">
       <header class="masthead wrap">
@@ -17,10 +21,9 @@
         <nav aria-label="邀请函导航">
           <a href="#details">派对详情</a>
           <a href="#gifts">礼物交换</a>
-          <a href="#registration">我要报名</a>
         </nav>
       </header>
-      <div class="snow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="snow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="hero wrap">
         <div class="hero-title">
           <p class="kicker">20 December 2026</p>
@@ -50,7 +53,12 @@
         <div class="envelope-stage">
           <div class="envelope">
             <div class="envelope-back"></div>
-            <div class="envelope-letter"><span>✦</span><small>YOU’RE INVITED TO</small><strong>Christmas Party</strong><small>20 DECEMBER 2026</small></div>
+            <div class="envelope-letter">
+              <small>YOU’RE INVITED TO</small>
+              <strong>Christmas Party</strong>
+              <time datetime="2026-12-20T18:00:00+08:00">20 DECEMBER 2026 · 6:00 PM</time>
+              <small>Alvin &amp; Irene’s Home<br>40, Jalan Pulau Li Hua 1</small>
+            </div>
             <div class="envelope-front"></div>
             <div class="envelope-flap"></div>
             <div class="envelope-seal">✦</div>
@@ -72,7 +80,6 @@
           <div><dt>👔👗 Dress Code｜服装主题</dt><dd>红、绿、白、金❤️💚🤍💛<br>（把自己打扮得漂漂亮亮📸，一起营造满满的圣诞氛围！）</dd></div>
           <div><dt>🍽️ Potluck｜食物分享</dt><dd>每人准备一份食物，与大家一起分享美味、同欢共庆！</dd></div>
         </dl>
-        <a class="button" href="#registration">我要报名！</a>
       </article>
     </section>
 

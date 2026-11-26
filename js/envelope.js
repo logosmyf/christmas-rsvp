@@ -14,7 +14,7 @@ function updateEnvelope() {
 
   envelope.style.setProperty('--flap', `${175 * flap}deg`);
   envelope.style.setProperty('--flap-layer', flap < .52 ? '4' : '1');
-  envelope.style.setProperty('--letter', `${-56 * letter}%`);
+  envelope.style.setProperty('--letter', `${-64 * letter}%`);
   envelope.style.setProperty('--seal', String(1 - clamp((progress - .12) / .16)));
 }
 

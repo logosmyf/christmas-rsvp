@@ -4,7 +4,7 @@ A single-page Christmas invitation hosted on GitHub Pages, with native HTML regi
 
 ## Preview
 
-Serve the repository root with `python3 -m http.server 8000`. Open `http://localhost:8000/`. The invitation is readable without JavaScript. With motion enabled, scrolling opens the flap and lifts a short preview from the envelope. The full details sit below in normal page flow. The supplied Jingle Bells MP3 starts when a guest presses play.
+Serve the repository root with `python3 -m http.server 8000`. Open `http://localhost:8000/`. The invitation is readable without JavaScript. With motion enabled, scrolling opens the flap and lifts a short preview from the envelope. The full details sit below in normal page flow. The page attempts to play the supplied Jingle Bells MP3 on load. Guests can pause or start it using the record button, including when their browser blocks autoplay.
 
 ## Configure registration
 
