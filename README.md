@@ -8,7 +8,7 @@ Serve the repository root with `python3 -m http.server 8000`. Open `http://local
 
 ## Configure registration
 
-The previous form used an existing Apps Script URL whose owner and destination spreadsheet have not been verified. The redesigned form starts with registration disabled until an organiser sets the endpoint.
+The registration form uses the organiser-provided Apps Script endpoint in `index.html`. To set up a replacement deployment or a separate test environment, follow the steps below.
 
 1. Open the intended private Google Sheet under the organiser account. Review the spreadsheet and Apps Script project time zones. Use **Asia/Kuala_Lumpur** for Malaysia event times. Sheet timestamps are stored as dates and displayed in the spreadsheet's configured time zone. Ask the organiser before changing an existing spreadsheet's time zone.
 2. Open **Extensions → Apps Script**, copy [Code.gs](google-sheets/Code.gs), and run `setupRsvp` with the requested permissions. It creates or validates **Registrations 2026**, formats the headers and columns, and preserves the old **RSVPs** tab and existing rows.
