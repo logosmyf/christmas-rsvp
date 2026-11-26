@@ -1,286 +1,168 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1c16">
-  <meta name="description" content="You’re invited to our Christmas celebration. Check back for event details and the RSVP form.">
-  <title>Christmas Celebration</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
-  <style>
-    :root {
-      color-scheme: dark;
-      font-family: system-ui, sans-serif;
-      --form-font: "Nunito", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-      background: #0b1c16;
-      color: #fff7e7;
-    }
-
-    * { box-sizing: border-box; }
-    body { margin: 0; }
-
-    main {
-      position: relative;
-      isolation: isolate;
-      display: grid;
-      align-items: center;
-      min-height: 100svh;
-      padding: clamp(1.5rem, 7vw, 8rem);
-      background: #0b1c16;
-    }
-
-    picture, picture img, .snow, main::after {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    picture { z-index: -3; }
-    picture img { object-fit: contain; object-position: right center; }
-    .snow {
-      z-index: -2;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .snow::before, .snow::after {
-      content: '';
-      position: absolute;
-      inset: -20rem 0 0;
-      background-image:
-        radial-gradient(circle at 15% 30%, #fff9ecb8 0 .08rem, transparent .14rem),
-        radial-gradient(circle at 61% 62%, #fff9ec83 0 .06rem, transparent .12rem),
-        radial-gradient(circle at 80% 14%, #fff9ec95 0 .09rem, transparent .16rem),
-        radial-gradient(circle at 29% 86%, #fff9ec6b 0 .06rem, transparent .12rem);
-      background-size: 16rem 20rem;
-      animation: fall 22s linear infinite;
-    }
-
-    .snow::after {
-      background-size: 21rem 20rem;
-      background-position: 6rem 7rem;
-      opacity: .53;
-      animation-duration: 34s;
-      animation-delay: -13s;
-    }
-
-    @keyframes fall {
-      to { transform: translateY(20rem); }
-    }
-
-    main::after {
-      content: '';
-      z-index: -1;
-      background: linear-gradient(90deg, #0b1c16 0%, #0b1c16d9 28%, #0b1c1630 60%, transparent 82%);
-    }
-
-    .invitation {
-      width: min(100%, 37rem);
-      padding-block: 2rem;
-    }
-
-    .ornament {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      color: #f3ce84;
-      font-size: 1.4rem;
-      margin-block-end: 1rem;
-    }
-
-    .ornament::before, .ornament::after {
-      content: '';
-      width: 2.75rem;
-      height: 1px;
-      background: #f3ce8480;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(3.3rem, 7vw, 7rem);
-      letter-spacing: -.055em;
-      line-height: .93;
-      margin: 0;
-    }
-
-    h1 em { color: #f3ce84; font-weight: inherit; }
-
-    p {
-      color: #ecdfca;
-      font-size: clamp(1rem, 1.55vw, 1.25rem);
-      line-height: 1.6;
-      max-width: 26rem;
-      margin: 1.5rem 0;
-    }
-
-    dl {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .8rem 2rem;
-      margin: 0 0 1.5rem;
-    }
-
-    dt {
-      color: #f3ce84;
-      font-size: .875rem;
-      font-weight: 700;
-    }
-
-    dd { margin: .25rem 0 0; color: #fff7e7; }
-
-    .rsvp {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 3.25rem;
-      padding: .65rem 1.35rem;
-      border: 1px solid #f3ce84;
-      border-radius: .25rem;
-      background: #f3ce84;
-      color: #182019;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .rsvp:enabled { cursor: pointer; }
-    .rsvp:enabled:hover { background: #ffe4ad; }
-    :focus-visible { outline: 2px solid #fff7e7; outline-offset: 3px; }
-
-    form {
-      max-width: 29rem;
-      padding: clamp(1rem, 4vw, 1.5rem);
-      background: #10261ef2;
-      border: 1px solid #f3ce8466;
-      border-radius: .5rem;
-      font-family: var(--form-font);
-    }
-
-    h2 {
-      margin: 0 0 .8rem;
-      font: 400 1.75rem Georgia, "Noto Sans SC", serif;
-    }
-
-    fieldset { display: grid; gap: .8rem; padding: 0; margin: 0; border: 0; min-width: 0; }
-    label { display: grid; gap: .3rem; font-size: .9rem; font-weight: 600; }
-    .attendance { display: grid; grid-template-columns: 3fr 2fr; gap: .8rem; }
-
-    input, select {
-      width: 100%;
-      min-height: 2.75rem;
-      padding: .5rem;
-      border: 1px solid #b8a57d;
-      border-radius: .25rem;
-      background: #091c15;
-      color: #fff7e7;
-      font: inherit;
-      font-size: 1rem;
-    }
-
-    input:disabled { opacity: .68; }
-    .rsvp { font-family: inherit; font-size: 1rem; }
-
-    .background-music {
-      display: grid;
-      gap: .35rem;
-      margin-top: 1.25rem;
-      font-size: .875rem;
-    }
-
-    .background-music audio {
-      width: 100%;
-      max-width: 20rem;
-    }
-
-    @media (max-width: 730px) {
-      main {
-        align-items: start;
-        padding: clamp(19rem, 50svh, 31rem) 1.5rem 2rem;
-      }
-      picture, .snow { height: clamp(22rem, 58svh, 35rem); }
-      picture img { object-fit: cover; object-position: center top; }
-      main::after {
-        background: linear-gradient(
-          to bottom,
-          transparent 15rem,
-          #0b1c1699 clamp(19rem, 50svh, 31rem),
-          #0b1c16 clamp(22rem, 58svh, 35rem)
-        );
-      }
-      .invitation { padding-block: 0 1rem; }
-      h1 { font-size: clamp(3.1rem, 11vw, 5rem); }
-      p { margin-block: 1rem; }
-    }
-  </style>
+  <meta name="description" content="LOGOSMYF 圣诞派对邀请函 · 2026年12月20日">
+  <title>LOGOSMYF Christmas Party 2026</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/envelope.js"></script>
+  <script defer src="js/registration.js"></script>
 </head>
 <body>
-  <main>
-    <picture>
-      <source media="(max-width: 730px)" srcset="christmas-tree-portrait.webp">
-      <img src="christmas-tree.webp" alt="A Christmas tree decorated with warm fairy lights and red and gold ornaments">
-    </picture>
-    <div class="snow" aria-hidden="true"></div>
-    <section class="invitation" aria-labelledby="event-title">
-      <div class="ornament" aria-hidden="true">✦</div>
-      <h1 id="event-title">Christmas<br><em>Celebration</em></h1>
-      <p>You’re invited to celebrate Christmas with us. We’d love to see you there!</p>
-      <dl>
-        <div>
-          <dt>Date and time</dt>
-          <dd>To be announced</dd>
+  <main id="top">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <header class="masthead wrap">
+        <a class="wordmark" href="#top">LOGOSMYF <span>·</span> 2026</a>
+        <nav aria-label="邀请函导航">
+          <a href="#details">派对详情</a>
+          <a href="#gifts">礼物交换</a>
+          <a href="#registration">我要报名</a>
+        </nav>
+      </header>
+      <div class="snow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero wrap">
+        <div class="hero-title">
+          <p class="kicker">20 December 2026</p>
+          <h1 id="welcome-title" lang="en">🎄✨ LOGOSMYF <em>CHRISTMAS</em> PARTYYYYY! ✨🎄</h1>
         </div>
-        <div>
-          <dt>Venue</dt>
-          <dd>To be announced</dd>
+        <figure class="hero-art"><img src="assets/images/christmas-tree.webp" alt="" width="880" height="1100" fetchpriority="high"></figure>
+        <div class="hero-intro">
+          <p>🎅🏻 Ho Ho Ho！一年中最有气氛、最令人期待的节日终于要来啦！🎉</p>
         </div>
-      </dl>
-      <form id="rsvp-form" method="post" action="https://script.google.com/macros/s/AKfycbyk-vfcuSWeAaSet4oLcAoEDI5P3Q6wUb6VD6hzZc4o7NgjhqpSy3WuxLPoVSYt5tCy/exec" aria-labelledby="rsvp-title">
-        <h2 id="rsvp-title">RSVP</h2>
-        <fieldset>
-          <input type="hidden" name="submissionId">
-          <label>Your name
-            <input name="guestName" autocomplete="name" maxlength="100" required>
-          </label>
-          <label>Email (optional)
-            <input type="email" name="email" autocomplete="email" maxlength="254">
-          </label>
-          <div class="attendance">
-            <label>Will you attend?
-              <select name="attendance" required>
-                <option value="" selected disabled>Select one</option>
-                <option value="yes">Yes, I’ll attend</option>
-                <option value="no">No, I can’t attend</option>
-              </select>
-            </label>
-            <label>Party size
-              <input type="number" name="partySize" min="1" step="1" value="1" required>
-            </label>
+      </div>
+      <div class="welcome-letter reading">
+        <p>街上开始挂满闪闪发亮的圣诞装饰，耳边响起熟悉的 Jingle Bells，空气中也渐渐弥漫着浓浓的圣诞气息。那份只属于十二月的浪漫、温暖与喜悦，即将到来！</p>
+        <p>圣诞节对我们来说，是一个非常值得我们感恩与庆祝的日子，因为在两千多年前，我们的救主耶稣基督为我们降生了！</p>
+        <p>今年，我们不想只是简单地说一声 Merry Christmas！我们想邀请你一起走进这个充满欢乐、惊喜与爱的圣诞世界！我们要一起玩得尽兴、笑得开心，把快乐和回忆通通装进口袋❤️</p>
+        <p>当然啦！今年依然少不了大家最期待的圣诞礼物环节🎁 但是玩法不一样哦！所以别只是隔着屏幕看别人的圣诞快乐，亲自来感受这份欢乐吧！</p>
+        <p class="notice">注意⚠️这次圣诞派对只开放给圣青家人们参与💒</p>
+        <div class="music">
+          <span id="music-label">背景音乐 · Jingle Bells</span>
+          <audio id="music-player" src="assets/jingle-bells.mp3" controls loop preload="none" aria-labelledby="music-label"></audio>
+        </div>
+          <a class="button gold" href="#details">向下滑动，打开你的圣诞邀请函 <span aria-hidden="true">⌄</span></a>
+      </div>
+    </section>
+
+    <section id="details" class="details" aria-labelledby="details-title">
+      <div class="envelope-scroll" aria-hidden="true">
+        <div class="envelope-stage">
+          <div class="envelope">
+            <div class="envelope-back"></div>
+            <div class="envelope-letter"><span>✦</span><small>YOU’RE INVITED TO</small><strong>Christmas Party</strong><small>20 DECEMBER 2026</small></div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">✦</div>
           </div>
-          <button class="rsvp" type="submit">Send RSVP</button>
-        </fieldset>
-      </form>
-      <div class="background-music">
-        <span id="background-music-label">Background music · Jingle Bells</span>
-        <audio src="assets/jingle-bells.mp3" controls loop preload="none" aria-labelledby="background-music-label"></audio>
+        </div>
+      </div>
+      <article class="invitation paper wrap">
+        <header class="section-heading">
+          <p class="kicker" lang="en">You're Invited to</p>
+          <p class="wordmark">LOGOSMYF</p>
+          <h2 id="details-title" lang="en">Christmas Party</h2>
+        </header>
+        <dl class="event-details">
+          <div><dt>📅 活动日期</dt><dd><time datetime="2026-12-20">2026年12月20日（星期日）</time></dd></div>
+          <div class="deadline"><dt>⚠️ 报名截止日期</dt><dd><time datetime="2026-12-12">2026年12月12日（星期六）</time></dd></div>
+          <div><dt>⏰ 时间</dt><dd>6:00pm<br>（我们会准时开始，请大家务必在 <strong>5:45pm 抵达</strong>，进行一些准备工作）</dd></div>
+          <div><dt>📍 地点</dt><dd><strong>Alvin &amp; Irene’s Home🏡</strong><br>40, Jalan Pulau Li Hua 1<br>（进去丽华宝岛时向保安告知门牌号码即可）</dd></div>
+          <div><dt>📞 联系方式</dt><dd><a href="tel:+60128852579">Alvin Lau 012-8852579</a><br><a href="tel:+60128872579">Irene Lau 012-8872579</a></dd></div>
+          <div><dt>👔👗 Dress Code｜服装主题</dt><dd>红、绿、白、金❤️💚🤍💛<br>（把自己打扮得漂漂亮亮📸，一起营造满满的圣诞氛围！）</dd></div>
+          <div><dt>🍽️ Potluck｜食物分享</dt><dd>每人准备一份食物，与大家一起分享美味、同欢共庆！</dd></div>
+        </dl>
+        <a class="button" href="#registration">我要报名！</a>
+      </article>
+    </section>
+
+    <section id="gifts" class="gifts" aria-labelledby="gift-title">
+      <div class="wrap">
+        <header class="section-heading">
+          <div class="decoration" aria-hidden="true">✧ 🎁 ✧</div>
+          <h2 id="gift-title"><span lang="en">Christmas Gift Exchange</span><small>圣诞礼物交换</small></h2>
+          <p class="subtitle">Santa &amp; Christmas Darling | 圣诞老人 &amp; 圣诞宝贝</p>
+        </header>
+        <div class="reading">
+          <p>最令人期待的环节来啦！🎅🏻</p>
+          <p>今年的圣诞交换礼物有一点特别！每个人都将化身为圣诞老人 &amp; 圣诞宝贝~</p>
+          <p>每个人（圣诞宝贝）都可以许下自己最想收到的礼物愿望，而你也将化身为一位圣诞老人，负责实现一位圣诞宝贝的小小心愿！🎄</p>
+        </div>
+        <div class="budget">🎁 礼物预算 <strong>RM30–RM50</strong></div>
+        <h3 class="steps-title">HOW TO PLAY？</h3>
+        <div class="steps">
+          <article><h4>✨ STEP 1｜圣诞宝贝写下你的圣诞愿望</h4><p>想一想今年最希望收到什么礼物，然后写下你的 Wish List！</p></article>
+          <article><h4>✨ STEP 2｜抽签成为圣诞老人 （报名截止后进行）</h4><p>通过抽签的方式找到你的圣诞宝贝。圣诞老人要根据圣诞宝贝填写的Wish List，准备一份 RM30 – RM50 的礼物，把这份惊喜送给TA！</p></article>
+        </div>
+        <div class="reading">
+          <p>收到礼物固然开心，但亲手为别人实现一个小小心愿，也是一件很幸福的事呀❤️</p>
+          <p class="notice">🤫 切记不可透露自己的圣诞宝贝哦！我们要把这份神秘感保留到圣诞派对当天，让惊喜一直延续到最后一刻！</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="registration" class="registration" aria-labelledby="registration-title">
+      <div class="paper wrap">
+        <header class="section-heading">
+          <p class="kicker">🎄 LOGOSMYF CHRISTMAS PARTY 🎄</p>
+          <h2 id="registration-title">Registration Form<small>我要报名！</small></h2>
+          <p>20 December 2026 · 6:00 PM</p>
+          <p class="deadline">报名截止：2026年12月12日（星期六）</p>
+        </header>
+        <!-- Set data-endpoint to the organiser's deployed Apps Script /exec URL. -->
+        <form id="registration-form" method="post" data-endpoint="">
+          <input type="hidden" name="submissionId">
+          <p>标有 * 的项目为必填。</p>
+          <fieldset>
+            <legend>个人资料 <small>Personal Information</small></legend>
+            <label>中文全名 Full Name *<input name="fullName" required maxlength="100" autocomplete="name" placeholder="请输入你的中文全名" aria-describedby="registration-status"></label>
+            <label>联系号码 Contact Number<input name="contactNumber" type="tel" inputmode="tel" maxlength="30" autocomplete="tel" placeholder="012-3456789" aria-describedby="registration-status"></label>
+          </fieldset>
+          <fieldset>
+            <legend>食物分享 <small>Potluck</small></legend>
+            <p>请填写你当天准备带来的食物。</p>
+            <label>食物名称<input name="foodName" maxlength="200" placeholder="例如：意大利面、蛋糕、饮料"></label>
+            <fieldset class="category">
+              <legend>食物类别</legend>
+              <div class="options">
+                <label><input type="radio" name="foodCategory" value="main">🍝 主食</label>
+                <label><input type="radio" name="foodCategory" value="snack">🍟 小吃</label>
+                <label><input type="radio" name="foodCategory" value="dessert">🍰 甜点</label>
+                <label><input type="radio" name="foodCategory" value="drink">🥤 饮料</label>
+                <label><input type="radio" name="foodCategory" value="other">其他</label>
+              </div>
+            </fieldset>
+          </fieldset>
+          <fieldset>
+            <legend>圣诞愿望清单 <small>Christmas Wish List</small></legend>
+            <p><strong class="wish-budget">RM30–RM50</strong> 写下 1–3 个你希望收到的礼物愿望，让你的 Santa 有更多选择！</p>
+            <label>愿望 1 *<input name="wish1" required maxlength="300" placeholder="例如：保温杯" aria-describedby="registration-status"></label>
+            <label>愿望 2<input name="wish2" maxlength="300" placeholder="例如：香薰蜡烛"></label>
+            <label>愿望 3<input name="wish3" maxlength="300" placeholder="例如：小型桌面摆设"></label>
+          </fieldset>
+          <fieldset>
+            <legend>其他备注 <small>Additional Notes</small></legend>
+            <label>其他备注<textarea name="notes" rows="4" maxlength="1000" placeholder="例如：食物过敏、其他需要告知主办单位的事项"></textarea></label>
+          </fieldset>
+          <p id="registration-status" role="status" aria-live="polite">报名暂未开放。</p>
+          <button class="button" type="submit" disabled>🎄 确认报名｜Submit Registration</button>
+          <p>报名截止日期：2026年12月12日（星期六）</p>
+          <noscript><p>请启用 JavaScript 后再报名。</p></noscript>
+        </form>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="reading">
+        <div class="decoration" aria-hidden="true">✧ ✦ ✧</div>
+        <h2 id="closing-title" lang="en">🎄 THIS CHRISTMAS, LET'S CELEBRATE LOVE, JOY &amp; TOGETHERNESS!</h2>
+        <p>圣诞节最美好的地方，不只是收到多少礼物，而是有一群家人愿意聚在一起，分享喜悦、传递爱与祝福。</p>
+        <p>诚心邀请你加入这场圣诞派对，让我们一起吃得开心、玩得尽兴、笑得灿烂，也一起纪念耶稣基督为我们带来的爱与盼望！</p>
+        <p>这个圣诞，因为有你，才更加完整❤️</p>
+        <p>🎅🏻 LOGOSMYF CHRISTMAS PARTY，我们12月20日见！不见不散！</p>
+        <a href="#top">回到邀请函顶部</a>
       </div>
     </section>
   </main>
-  <script>
-    const form = document.getElementById('rsvp-form');
-    const { attendance, partySize, submissionId } = form.elements;
-
-    function updatePartySize() {
-      partySize.disabled = attendance.value === 'no';
-    }
-
-    attendance.addEventListener('change', updatePartySize);
-    window.addEventListener('pageshow', updatePartySize);
-    form.addEventListener('submit', () => {
-      submissionId.value ||= crypto.randomUUID();
-    });
-  </script>
 </body>
 </html>

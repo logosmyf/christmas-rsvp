@@ -1,16 +1,24 @@
-# Christmas RSVP
+# LOGOSMYF Christmas Party 2026
 
-The invitation is a static GitHub Pages site. Its built-in RSVP form sends submissions to a Google Apps Script web app, which writes each successful response to a private Google Sheet.
+A single-page Christmas invitation hosted on GitHub Pages, with native HTML registration POSTs to Google Apps Script and a private Google Sheet. The site uses plain HTML, CSS and JavaScript.
 
-## Set up the response Sheet
+## Preview
 
-1. Create a blank, private Google Sheet named **Christmas RSVP responses**.
-2. Open **Extensions → Apps Script**, replace the contents of `Code.gs` with [the RSVP script](google-sheets/Code.gs), and save.
-3. Select `setupRsvp` in the function dropdown and click **Run**. Approve the requested spreadsheet access. This prepares the **RSVPs** tab and associates the script with the spreadsheet.
-4. Choose **Deploy → New deployment → Web app**. Set **Execute as** to **Me** and **Who has access** to **Anyone** so guests can submit without signing into Google. Leave the Sheet itself private.
-5. If you replace the current deployment, copy the web app URL ending in `/exec` and update the form’s `action` in `index.html`.
-6. After the site updates, submit a test RSVP in a signed-out browser. Check that the confirmation appears and that the row is in the **RSVPs** tab.
+Serve the repository root with `python3 -m http.server 8000`. Open `http://localhost:8000/`. The invitation is readable without JavaScript. With motion enabled, scrolling opens the flap and lifts a short preview from the envelope. The full details sit below in normal page flow. The supplied Jingle Bells MP3 starts when a guest presses play.
 
-## Enable GitHub Pages
+## Configure registration
 
-In the repository, open **Settings → Pages**. Choose **Deploy from a branch**, select **main** and **/(root)**, and save.
+The previous form used an existing Apps Script URL whose owner and destination spreadsheet have not been verified. The redesigned form starts with registration disabled until an organiser sets the endpoint.
+
+1. Open the intended private Google Sheet under the organiser account. Review the spreadsheet and Apps Script project time zones. Use **Asia/Kuala_Lumpur** for Malaysia event times. Sheet timestamps are stored as dates and displayed in the spreadsheet's configured time zone. Ask the organiser before changing an existing spreadsheet's time zone.
+2. Open **Extensions → Apps Script**, copy [Code.gs](google-sheets/Code.gs), and run `setupRsvp` with the requested permissions. It creates or validates **Registrations 2026**, formats the headers and columns, and preserves the old **RSVPs** tab and existing rows.
+3. Deploy a web app as the authorised organiser. Set **Execute as** to **Me** and **Who has access** to **Anyone** so participants can register without signing into Google. Keep the spreadsheet private. For an existing web app, update its deployment to a new script version. Editing the repository or saving a script file alone does not update a deployed web app.
+4. Paste the authorised `https://script.google.com/macros/s/…/exec` URL into the registration form's `data-endpoint` in [index.html](index.html). Verify the return address in `WEBSITE_URL`.
+5. Test first against a separate private test spreadsheet and deployment, including while signed out. Verify success, then check the actual sheet row. Test browser Back and resubmission with the same ID, and check that a public GET never returns responses.
+6. After approval, verify **Settings → Pages** for the `logosmyf/christmas-rsvp` repository. Set it to deploy from the intended branch and root directory. The expected URL is https://logosmyf.github.io/christmas-rsvp/.
+
+The site uses a native POST and the Apps Script confirmation page, so a network error cannot be interpreted as success. Guests can use browser Back to retry. The page keeps the attempt ID in browser history and relies on the browser to restore entered form values. The website does not save personal information in browser storage.
+
+## Worksheet
+
+**Registrations 2026** columns in order are Submitted at, Full Name, Contact Number, Food Name, Food Category, Wish 1, Wish 2, Wish 3, Additional Notes and Submission ID. The script writes the timestamp, treats phone numbers as text, maps category codes to Chinese labels, protects text from spreadsheet formulas, and deduplicates retries under a lock. The 12 December deadline is informational. Any future change to enforce it should update both the visible form state and the backend setting.
