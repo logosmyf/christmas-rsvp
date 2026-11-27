@@ -164,11 +164,18 @@ section { scroll-margin-top: 1rem; }
 .is-animated .envelope-stage { position: sticky; top: 0; height: 90svh; align-items: center; padding-top: min(17svh, 7rem); }
 .envelope { width: min(78vw, 28rem, 88svh); aspect-ratio: 1.62; position: relative; perspective: 900px; filter: drop-shadow(0 12px 12px #382a2635); }
 .envelope-back, .envelope-front, .envelope-flap { position: absolute; inset: 0; }
-.envelope-back { background: #720e1c; }
-.envelope-front { z-index: 3; background: linear-gradient(135deg, #8a1625 49.8%, #ad2838 50%, #8d1627 87%); clip-path: polygon(0 0, 50% 64%, 100% 0, 100% 100%, 0 100%); }
+.envelope-back { background: #102d24; }
+.envelope-front {
+  z-index: 3;
+  background:
+    radial-gradient(circle, #eef8ee9e 0 1px, transparent 1.6px) 3px 8px / 37px 41px,
+    radial-gradient(circle, #eef8ee60 0 1.5px, transparent 2px) 12px 3px / 53px 47px,
+    linear-gradient(145deg, #275642 50%, #173b2e 50.4%, #24503f);
+  clip-path: polygon(0 0, 50% 64%, 100% 0, 100% 100%, 0 100%);
+}
 .envelope-flap {
   z-index: var(--flap-layer, 1);
-  background: linear-gradient(#ab293b, #8b1525);
+  background: linear-gradient(#3b6956, #214734);
   clip-path: polygon(0 0, 100% 0, 50% 67%);
   transform-origin: top center;
   transform: rotateX(var(--flap, 175deg));
@@ -177,7 +184,11 @@ section { scroll-margin-top: 1rem; }
   position: absolute;
   z-index: 2;
   inset: 4% 5% 1%;
-  padding: 5% 4% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4%;
   border: 1px solid #b28a4f;
   background: radial-gradient(ellipse at 50% 0, #fffdf5, #f4e6ce);
   box-shadow: inset 0 0 0 4px #fff8ed, inset 0 0 0 5px #b28a4fa8, 0 4px 15px #41071050;
@@ -211,7 +222,6 @@ section { scroll-margin-top: 1rem; }
 .envelope-letter p { margin: .4em 0 0; font-size: clamp(.64rem, 1.8vw, .95rem); font-weight: 400; }
 .envelope-letter p span { font-size: .9em; font-weight: 400; }
 .envelope-letter .letter-greeting, .envelope-letter .letter-closing { font: 600 clamp(.7rem, 2vw, 1rem)/1.18 var(--display); }
-.envelope-letter .letter-closing b { font-weight: 700; }
 
 .envelope-seal {
   position: absolute;
@@ -223,10 +233,12 @@ section { scroll-margin-top: 1rem; }
   place-items: center;
   width: 12%;
   aspect-ratio: 1;
-  border: 3px double #8e6127;
+  border: 3px double #d2e0d5;
   border-radius: 50%;
-  background: var(--gold);
-  color: #6b301d;
+  background: radial-gradient(circle at 35% 30%, #9e4652, #682b3a 78%);
+  color: #f3f8f1;
+  font-size: clamp(.85rem, 3vw, 1.6rem);
+  box-shadow: 0 2px 5px #102d2460;
   opacity: var(--seal, 0);
 }
 .paper {

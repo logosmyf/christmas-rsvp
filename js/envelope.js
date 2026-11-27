@@ -34,13 +34,12 @@ updateMotionPreference();
 
 const snow = document.querySelector('.snow');
 
-for (let index = 0; index < 70; index++) {
+for (let index = 0; index < 110; index++) {
   const flake = document.createElement('span');
-  const large = index % 3 === 0;
-  flake.style.setProperty('--left', `${(3 + index * 37) % 98}%`);
-  flake.style.setProperty('--size', `${large ? 6 + index % 5 : 3 + index % 4}px`);
+  flake.style.setProperty('--left', `${(30 + index * 379) % 980 / 10}%`);
+  flake.style.setProperty('--size', `${3 + index % 4}px`);
   flake.style.setProperty('--duration', `${5 + index % 7}s`);
   flake.style.setProperty('--delay', `-${(index * 17 % 87) / 10}s`);
-  flake.style.setProperty('--opacity', large ? '.92' : '.68');
+  flake.style.setProperty('--opacity', String(.55 + (index % 4) * .09));
   snow.append(flake);
 }
