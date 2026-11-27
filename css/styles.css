@@ -316,7 +316,6 @@ input::placeholder, textarea::placeholder { color: #685649; opacity: 1; }
 .options label { display: inline-flex; align-items: center; min-height: 44px; margin: 0; padding: .35rem .55rem; border: 1px solid #a58a6f; cursor: pointer; }
 .options label:has(:checked) { background: var(--green); color: var(--ivory); }
 input[type="radio"] { accent-color: var(--green); }
-.wish-budget { color: var(--burgundy); }
 [aria-invalid="true"] { outline: 2px solid var(--burgundy); }
 #registration-status { color: var(--burgundy); font-weight: 700; }
 #registration-status:empty { margin: 0; }
