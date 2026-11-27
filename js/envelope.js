@@ -44,9 +44,3 @@ for (let index = 0; index < 70; index++) {
   flake.style.setProperty('--opacity', large ? '.92' : '.68');
   snow.append(flake);
 }
-
-if ('IntersectionObserver' in window) {
-  new IntersectionObserver(([entry]) => {
-    snow.classList.toggle('paused', !entry.isIntersecting);
-  }).observe(snow);
-}

@@ -132,8 +132,7 @@ section { scroll-margin-top: 1rem; }
 .music-disc.is-playing {
   background: repeating-radial-gradient(circle, #211619 0 3px, #604047 4px 5px);
 }
-.snow { position: absolute; inset: 0 0 auto; height: 100svh; z-index: 1; pointer-events: none; }
-.hero-title, .hero-intro { position: relative; z-index: 2; }
+.snow { position: fixed; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }
 .snow span {
   position: absolute;
   left: var(--left);
@@ -145,11 +144,10 @@ section { scroll-margin-top: 1rem; }
   box-shadow: 0 0 5px #fff5;
   animation: snowfall var(--duration) linear infinite var(--delay);
 }
-.snow.paused span { animation-play-state: paused; }
 @keyframes snowfall {
   from { transform: translate3d(-.8rem, 0, 0); opacity: 0; }
   12%, 82% { opacity: var(--opacity); }
-  to { transform: translate3d(2.1rem, 105svh, 0); opacity: 0; }
+  to { transform: translate3d(2.1rem, 105dvh, 0); opacity: 0; }
 }
 
 .details {
