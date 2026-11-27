@@ -58,19 +58,13 @@ section { scroll-margin-top: 1rem; }
 .masthead {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 1rem;
   padding-block: .55rem;
   padding-inline-end: 3.5rem;
   border-bottom: 1px solid #d9b66f70;
 }
-.masthead nav { display: flex; flex-wrap: wrap; gap: 0 .85rem; font-size: .875rem; }
+.masthead nav { display: flex; gap: clamp(.55rem, 2.5vw, .85rem); font-size: clamp(.78rem, 3.5vw, .875rem); white-space: nowrap; }
 .masthead a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 .masthead a:hover { text-decoration: underline; }
-.wordmark span { margin-inline: .5ch; color: var(--gold); }
 .hero {
   position: relative;
   display: grid;
