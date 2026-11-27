@@ -212,6 +212,7 @@ section { scroll-margin-top: 1rem; }
   letter-spacing: -.05em;
 }
 .envelope-letter time {
+  margin-block-start: .35rem;
   display: inline-block;
   padding: .28em .5em;
   border-block: 1px solid #b28a4fa8;
