@@ -86,10 +86,6 @@ section { scroll-margin-top: 1rem; }
   letter-spacing: -.035em;
   white-space: nowrap;
 }
-.letter-greeting {
-  color: var(--burgundy);
-  font: 1.35rem/1.45 var(--display);
-}
 .hero-art {
   width: min(100%, 31rem);
   margin: 1.5rem 0;
@@ -222,7 +218,7 @@ section { scroll-margin-top: 1rem; }
 }
 .envelope-letter p { margin: .4em 0 0; font-size: clamp(.64rem, 1.8vw, .95rem); font-weight: 400; }
 .envelope-letter p span { font-size: .9em; font-weight: 400; }
-.envelope-letter .letter-closing { color: var(--burgundy); font: 600 clamp(.7rem, 2vw, 1rem)/1.18 var(--display); }
+.envelope-letter .letter-greeting, .envelope-letter .letter-closing { color: var(--burgundy); font: 600 clamp(.7rem, 2vw, 1rem)/1.18 var(--display); }
 .envelope-letter .letter-closing b { font-weight: 700; }
 
 .envelope-seal {
