@@ -22,3 +22,14 @@ The site uses a native POST and the Apps Script confirmation page, so a network 
 ## Worksheet
 
 **Registrations 2026** columns in order are Submitted at, Full Name, Contact Number, Food Name, Food Category, Wish 1, Wish 2, Wish 3, Additional Notes and Submission ID. The script writes the timestamp, treats phone numbers as text, maps category codes to Chinese labels, protects text from spreadsheet formulas, and deduplicates retries under a lock. The 12 December deadline is informational. Any future change to enforce it should update both the visible form state and the backend setting.
+
+## Hourly spreadsheet backups
+
+1. While signed in as the organiser who owns the private registration spreadsheet, create a standalone project at https://script.google.com/. Paste [Backup.gs](google-sheets/Backup.gs) into its script editor. A separate project keeps Drive permissions and the backup trigger independent of the public registration web app.
+2. Set `RSVP_BACKUP_SOURCE_ID` to the part of the live spreadsheet URL between `/d/` and `/edit`.
+3. Save the project, then run `setupHourlyRsvpBackup` once and authorise Google Drive access. It creates the first backup in **My Drive → Christmas RSVP Backups** and installs a trigger that runs approximately once an hour. No web app deployment is needed.
+4. Open the first backup from Drive and check **Registrations 2026**, including the hidden **Submission ID** column. After the next hour, check **Executions** in the backup project for a successful time-driven run.
+
+The script keeps the newest 48 hourly snapshots plus the newest snapshot from each of the last 14 Malaysia calendar days, counting the current day. A snapshot can satisfy both rules. Expired copies created by this script go to Drive Trash. Keep the backup folder private.
+
+To recover from a problem, make a working copy of the chosen backup. If you need a new live spreadsheet, set up the registration Apps Script on that working copy, run `setupRsvp` and use the resulting web app deployment URL in the site. Update the backup project's source ID to cover the replacement spreadsheet.
